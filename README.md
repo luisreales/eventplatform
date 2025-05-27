@@ -47,3 +47,7 @@ ng serve                        # Runs on http://localhost:4200
 
 I have tested the CRUD in Postman, I had problem problem with the Edit in Angular, have issue problem in my laptop to finish, so only have the Create, Delete and Get methods in Angular.Use clean arquitecture for this project.
 
+#Update
+
+Functionality of Edit was solved successfully
+

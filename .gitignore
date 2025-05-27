@@ -1,0 +1,17 @@
+# Ignore everything
+*
+
+# But not these files...
+!.gitignore
+!README.md
+
+# Ignore specific directories
+Frontend/
+Backend/
+.vscode/
+
+# Ignore common files
+*.log
+*.swp
+*.swo
+.DS_Store 

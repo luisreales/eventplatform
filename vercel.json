@@ -8,5 +8,17 @@
       "src": "/(.*)",
       "dest": "/index.html"
     }
+  ],
+  "builds": [
+    {
+      "src": "Frontend/event-platform/package.json",
+      "use": "@vercel/static-build",
+      "config": {
+        "distDir": "dist/event-platform",
+        "buildCommand": "npm run build -- --configuration production",
+        "installCommand": "npm install",
+        "nodeVersion": "20.11.1"
+      }
+    }
   ]
 } 

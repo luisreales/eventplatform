@@ -1,6 +1,10 @@
 {
   "name": "event-platform",
   "version": "0.0.0",
+  "engines": {
+    "node": ">=20.11.1",
+    "npm": ">=8.0.0"
+  },
   "scripts": {
     "ng": "ng",
     "start": "ng serve",

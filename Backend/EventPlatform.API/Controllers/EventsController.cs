@@ -27,11 +27,7 @@ namespace EventPlatform.API.Controllers
         public async Task<ActionResult<IEnumerable<Event>>> GetEvents()
         {
             var events = await _context.Events.ToListAsync();
-            if (!events.Any())
-            {
-                throw new EventPlatformException("No events found.", 404);
-            }
-            return events;
+            return Ok(events); // Return empty list if no events found
         }
 
         // GET: api/events/5
@@ -42,7 +38,7 @@ namespace EventPlatform.API.Controllers
 
             if (eventItem == null)
             {
-                throw new EventPlatformException($"Event with ID {id} not found.", 404);
+                return NotFound($"Event with ID {id} not found.");
             }
 
             return eventItem;
@@ -78,7 +74,7 @@ namespace EventPlatform.API.Controllers
             var existingEvent = await _context.Events.FindAsync(id);
             if (existingEvent == null)
             {
-                return NotFound();
+                return NotFound($"Event with ID {id} not found.");
             }
 
             _context.Entry(existingEvent).CurrentValues.SetValues(eventItem);
@@ -93,7 +89,7 @@ namespace EventPlatform.API.Controllers
             var eventItem = await _context.Events.FindAsync(id);
             if (eventItem == null)
             {
-                throw new EventPlatformException($"Event with ID {id} not found.", 404);
+                return NotFound($"Event with ID {id} not found.");
             }
 
             _context.Events.Remove(eventItem);

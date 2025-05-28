@@ -1,17 +1,46 @@
-# Ignore everything
-*
+# Ignore build output and user-specific files
+**/bin/
+**/obj/
+**/packages/
+**/*.user
+**/*.suo
+**/*.userosscache
+**/*.sln.docstates
+**/*.userprefs
+**/*.nupkg
+**/*.nuget.props
+**/*.nuget.targets
+**/*.nuget.dgspec.json
+**/*.nuget.g.props
+**/*.nuget.g.targets
+**/project.assets.json
+**/project.nuget.cache
 
-# But not these files...
-!.gitignore
-!README.md
+# Node modules and Angular build output
+**/node_modules/
+**/dist/
+**/.angular/
 
-# Ignore specific directories
-Frontend/
-Backend/
+# IDE and OS files
 .vscode/
-
-# Ignore common files
+.idea/
+.DS_Store
 *.log
 *.swp
 *.swo
-.DS_Store 
+
+# Environment files
+.env
+
+# Allow these files and folders
+!.gitignore
+!README.md
+!Backend/
+!Backend/Dockerfile
+!Backend/docker-compose.yml
+!Backend/EventPlatform.API/
+!Backend/EventPlatform.Application/
+!Backend/EventPlatform.Domain/
+!Backend/EventPlatform.Infrastructure/
+!Backend/EventPlatform.sln
+!Frontend/ 

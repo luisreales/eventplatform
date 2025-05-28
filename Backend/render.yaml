@@ -1,0 +1,12 @@
+services:
+  - type: web
+    name: eventplatform-api
+    env: docker
+    dockerfilePath: ./EventPlatform.API/Dockerfile
+    envVars:
+      - key: ASPNETCORE_ENVIRONMENT
+        value: Production
+      - key: ASPNETCORE_URLS
+        value: http://+:80
+    healthCheckPath: /api/events
+    autoDeploy: true 

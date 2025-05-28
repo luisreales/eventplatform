@@ -1,13 +1,22 @@
 {
   "version": 2,
-  "buildCommand": "cd Frontend/event-platform && npm install && npm run build -- --configuration production",
-  "outputDirectory": "Frontend/event-platform/dist/event-platform",
+  "buildCommand": "npm install && npm run build -- --configuration production",
+  "outputDirectory": "dist/event-platform",
   "framework": "angular",
-  "installCommand": "cd Frontend/event-platform && npm install",
+  "installCommand": "npm install",
   "rewrites": [
     {
       "source": "/(.*)",
       "destination": "/index.html"
+    }
+  ],
+  "builds": [
+    {
+      "src": "Frontend/event-platform/package.json",
+      "use": "@vercel/static-build",
+      "config": {
+        "distDir": "dist/event-platform"
+      }
     }
   ]
 } 

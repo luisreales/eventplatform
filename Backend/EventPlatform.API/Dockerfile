@@ -20,4 +20,7 @@ RUN dotnet publish "EventPlatform.API.csproj" -c Release -o /app/publish
 FROM base AS final
 WORKDIR /app
 COPY --from=publish /app/publish .
+# Create directory for SQLite database and set permissions
+RUN mkdir -p /app/Data && chown -R $APP_UID:$APP_UID /app/Data
+ENV DOTNET_RUNNING_IN_CONTAINER=true
 ENTRYPOINT ["dotnet", "EventPlatform.API.dll"] 

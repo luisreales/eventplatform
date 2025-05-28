@@ -8,5 +8,7 @@ services:
         value: Production
       - key: ASPNETCORE_URLS
         value: http://+:80
+      - key: DOTNET_RUNNING_IN_CONTAINER
+        value: true
     healthCheckPath: /api/events
     autoDeploy: true 

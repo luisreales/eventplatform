@@ -11,4 +11,5 @@ services:
       - key: DOTNET_RUNNING_IN_CONTAINER
         value: true
     healthCheckPath: /api/events
-    autoDeploy: true 
+    autoDeploy: true
+    rootDir: Backend 

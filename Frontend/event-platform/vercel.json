@@ -1,9 +1,9 @@
 {
   "version": 2,
-  "buildCommand": "npm install && npm run build -- --configuration production",
-  "outputDirectory": "dist/event-platform",
+  "buildCommand": "cd Frontend/event-platform && npm install && npm run build -- --configuration production",
+  "outputDirectory": "Frontend/event-platform/dist/event-platform",
   "framework": "angular",
-  "installCommand": "npm install",
+  "installCommand": "cd Frontend/event-platform && npm install",
   "rewrites": [
     {
       "source": "/(.*)",

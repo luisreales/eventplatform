@@ -1,14 +1,5 @@
 {
   "version": 2,
-  "buildCommand": "cd Frontend/event-platform && npm install && npm run build -- --configuration production",
-  "outputDirectory": "Frontend/event-platform/dist/event-platform",
-  "framework": "angular",
-  "routes": [
-    {
-      "src": "/(.*)",
-      "dest": "/index.html"
-    }
-  ],
   "builds": [
     {
       "src": "Frontend/event-platform/package.json",
@@ -19,6 +10,16 @@
         "installCommand": "npm install",
         "nodeVersion": "20.11.1"
       }
+    }
+  ],
+  "routes": [
+    {
+      "src": "/assets/(.*)",
+      "dest": "/assets/$1"
+    },
+    {
+      "src": "/(.*)",
+      "dest": "/index.html"
     }
   ]
 } 

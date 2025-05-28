@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("EventPlatform.Application")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+bb94384a211d65f18270aefec187b0772571a6a7")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+82be5d25892661a937e705a2a9ea04ffd9e3899a")]
 [assembly: System.Reflection.AssemblyProductAttribute("EventPlatform.Application")]
 [assembly: System.Reflection.AssemblyTitleAttribute("EventPlatform.Application")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

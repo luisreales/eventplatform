@@ -2,6 +2,7 @@ services:
   - type: web
     name: eventplatform-api
     env: docker
+    rootDir: Backend
     dockerfilePath: ./EventPlatform.API/Dockerfile
     envVars:
       - key: ASPNETCORE_ENVIRONMENT
@@ -11,5 +12,4 @@ services:
       - key: DOTNET_RUNNING_IN_CONTAINER
         value: true
     healthCheckPath: /api/events
-    autoDeploy: true
-    rootDir: Backend 
+    autoDeploy: true 

@@ -1,7 +1,7 @@
 {
   "version": 2,
   "buildCommand": "npm run build -- --configuration production",
-  "outputDirectory": "dist/frontend-test",
+  "outputDirectory": "dist/frontend-test/browser",
   "framework": "angular",
   "routes": [
     {

@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "buildCommand": "npm run build -- --configuration production",
+  "buildCommand": "npm run build -- --configuration production --base-href=/",
   "outputDirectory": "dist/frontend-test/browser",
   "framework": "angular",
   "headers": [

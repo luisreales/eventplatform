@@ -3,6 +3,17 @@
   "buildCommand": "npm run build -- --configuration production",
   "outputDirectory": "dist/frontend-test/browser",
   "framework": "angular",
+  "headers": [
+    {
+      "source": "/(.*).js",
+      "headers": [
+        {
+          "key": "Content-Type",
+          "value": "application/javascript"
+        }
+      ]
+    }
+  ],
   "routes": [
     {
       "src": "/(.*)",

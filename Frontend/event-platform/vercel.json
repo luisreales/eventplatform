@@ -1,7 +1,7 @@
 {
   "version": 2,
   "buildCommand": "npm run build -- --configuration production",
-  "outputDirectory": "publish",
+  "outputDirectory": "dist/event-platform",
   "framework": "angular",
   "routes": [
     {

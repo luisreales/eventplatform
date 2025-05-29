@@ -8,6 +8,7 @@ import { environment } from '../../environments/environment';
   providedIn: 'root'
 })
 export class EventService {
+  // Using production API URL from environment configuration
   private apiUrl = environment.apiUrl + '/events';
 
   constructor(private http: HttpClient) { }

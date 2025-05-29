@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "buildCommand": "npm run build -- --configuration production --base-href=/",
+  "buildCommand": "npm install -g @angular/cli && npm install && ng build --configuration production --base-href=/",
   "outputDirectory": "dist/event-platform/browser",
   "framework": "angular",
   "rewrites": [

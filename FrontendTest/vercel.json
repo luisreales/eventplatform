@@ -3,6 +3,12 @@
   "buildCommand": "npm run build -- --configuration production --base-href=/",
   "outputDirectory": "dist/frontend-test/browser",
   "framework": "angular",
+  "rewrites": [
+    {
+      "source": "/(.*)",
+      "destination": "/index.html"
+    }
+  ],
   "headers": [
     {
       "source": "/(.*).js",
@@ -38,20 +44,6 @@
           "value": "text/css; charset=utf-8"
         }
       ]
-    }
-  ],
-  "routes": [
-    {
-      "src": "/assets/(.*)",
-      "dest": "/assets/$1"
-    },
-    {
-      "src": "/(.*)\\.(js|css|json|ico|png|jpg|jpeg|svg|woff|woff2|ttf|eot)",
-      "dest": "/$1.$2"
-    },
-    {
-      "src": "/(.*)",
-      "dest": "/index.html"
     }
   ]
 } 

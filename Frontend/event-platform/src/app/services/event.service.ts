@@ -2,22 +2,14 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Event } from '../models/event.model';
-import { environment } from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class EventService {
-  private apiUrl: string;
+  private apiUrl = 'https://eventplatform-api.onrender.com/api/events';
 
   constructor(private http: HttpClient) {
-    if (environment.production) {
-      console.log('Running in PRODUCTION mode');
-      this.apiUrl = 'https://eventplatform-api.onrender.com/api/events';
-    } else {
-      console.log('Running in DEVELOPMENT mode');
-      this.apiUrl = 'http://localhost:5237/api/events';
-    }
     console.log('Using API URL:', this.apiUrl);
   }
 

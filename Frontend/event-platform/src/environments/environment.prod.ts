@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  apiUrl: 'https://eventplatform-api.onrender.com/api'
+  apiUrl: process.env['API_URL'] || 'https://eventplatform-api.onrender.com/api'
 }; 

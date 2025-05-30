@@ -19,34 +19,36 @@ import { Event } from '../../models/event.model';
       <table mat-table [dataSource]="events" class="mat-elevation-z8">
         <ng-container matColumnDef="title">
           <th mat-header-cell *matHeaderCellDef>Title</th>
-          <td mat-cell *matCellDef="let event">{{event.Title}}</td>
+          <td mat-cell *matCellDef="let event">{{event.title}}</td>
         </ng-container>
 
         <ng-container matColumnDef="dateTime">
           <th mat-header-cell *matHeaderCellDef>Date & Time</th>
-          <td mat-cell *matCellDef="let event">{{event.DateTime | date:'medium'}}</td>
+          <td mat-cell *matCellDef="let event">{{event.dateTime | date:'medium'}}</td>
         </ng-container>
 
         <ng-container matColumnDef="location">
           <th mat-header-cell *matHeaderCellDef>Location</th>
-          <td mat-cell *matCellDef="let event">{{event.Location}}</td>
+          <td mat-cell *matCellDef="let event">{{event.location}}</td>
         </ng-container>
 
         <ng-container matColumnDef="status">
           <th mat-header-cell *matHeaderCellDef>Status</th>
-          <td mat-cell *matCellDef="let event">{{event.Status}}</td>
+          <td mat-cell *matCellDef="let event">{{event.status}}</td>
         </ng-container>
 
         <ng-container matColumnDef="actions">
           <th mat-header-cell *matHeaderCellDef>Actions</th>
           <td mat-cell *matCellDef="let event">
             <ng-container *ngIf="events.length > 0">
-              <button mat-icon-button [routerLink]="['/events', event.Id]">
-                <mat-icon>edit</mat-icon>
-              </button>
-              <button mat-icon-button color="warn" (click)="deleteEvent(event.Id)">
-                <mat-icon>delete</mat-icon>
-              </button>
+              <div class="action-buttons">
+                <button mat-icon-button [routerLink]="['/events', event.id]">
+                  <mat-icon>edit</mat-icon>
+                </button>
+                <button mat-icon-button color="warn" (click)="deleteEvent(event.id)">
+                  <mat-icon>delete</mat-icon>
+                </button>
+              </div>
             </ng-container>
           </td>
         </ng-container>
@@ -72,6 +74,11 @@ import { Event } from '../../models/event.model';
     .mat-column-actions {
       width: 120px;
       text-align: center;
+    }
+    .action-buttons {
+      display: flex;
+      justify-content: center;
+      gap: 8px; /* Adjust the gap between buttons as needed */
     }
   `]
 })

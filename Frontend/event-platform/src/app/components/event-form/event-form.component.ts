@@ -31,38 +31,38 @@ import { Event, EventStatus } from '../../models/event.model';
       <form [formGroup]="eventForm" (ngSubmit)="onSubmit()">
         <mat-form-field appearance="fill">
           <mat-label>Title</mat-label>
-          <input matInput formControlName="Title" required>
-          <mat-error *ngIf="eventForm.get('Title')?.hasError('required')">Title is required</mat-error>
+          <input matInput formControlName="title" required>
+          <mat-error *ngIf="eventForm.get('title')?.hasError('required')">Title is required</mat-error>
         </mat-form-field>
 
         <mat-form-field appearance="fill">
           <mat-label>Date & Time</mat-label>
-          <input matInput [matDatepicker]="picker" formControlName="DateTime" required>
+          <input matInput [matDatepicker]="picker" formControlName="dateTime" required>
           <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
           <mat-datepicker #picker></mat-datepicker>
-          <mat-error *ngIf="eventForm.get('DateTime')?.hasError('required')">Date & Time is required</mat-error>
+          <mat-error *ngIf="eventForm.get('dateTime')?.hasError('required')">Date & Time is required</mat-error>
         </mat-form-field>
 
         <mat-form-field appearance="fill">
           <mat-label>Location</mat-label>
-          <input matInput formControlName="Location" required>
-          <mat-error *ngIf="eventForm.get('Location')?.hasError('required')">Location is required</mat-error>
+          <input matInput formControlName="location" required>
+          <mat-error *ngIf="eventForm.get('location')?.hasError('required')">Location is required</mat-error>
         </mat-form-field>
 
         <mat-form-field appearance="fill">
           <mat-label>Description</mat-label>
-          <textarea matInput formControlName="Description" required></textarea>
-          <mat-error *ngIf="eventForm.get('Description')?.hasError('required')">Description is required</mat-error>
+          <textarea matInput formControlName="description" required></textarea>
+          <mat-error *ngIf="eventForm.get('description')?.hasError('required')">Description is required</mat-error>
         </mat-form-field>
 
         <mat-form-field appearance="fill">
           <mat-label>Status</mat-label>
-          <mat-select formControlName="Status" required>
+          <mat-select formControlName="status" required>
             <mat-option *ngFor="let status of eventStatuses" [value]="status">
               {{status}}
             </mat-option>
           </mat-select>
-          <mat-error *ngIf="eventForm.get('Status')?.hasError('required')">Status is required</mat-error>
+          <mat-error *ngIf="eventForm.get('status')?.hasError('required')">Status is required</mat-error>
         </mat-form-field>
 
         <div class="button-container">
@@ -106,11 +106,11 @@ export class EventFormComponent implements OnInit {
     private route: ActivatedRoute
   ) {
     this.eventForm = this.fb.group({
-      Title: ['', Validators.required],
-      DateTime: ['', Validators.required],
-      Location: ['', Validators.required],
-      Description: ['', Validators.required],
-      Status: ['', Validators.required]
+      title: ['', Validators.required],
+      dateTime: ['', Validators.required],
+      location: ['', Validators.required],
+      description: ['', Validators.required],
+      status: ['', Validators.required]
     });
   }
 
@@ -122,11 +122,11 @@ export class EventFormComponent implements OnInit {
       this.eventService.getEvent(this.eventId).subscribe({
         next: (event) => {
           this.eventForm.patchValue({
-            Title: event.Title,
-            DateTime: new Date(event.DateTime),
-            Location: event.Location,
-            Description: event.Description,
-            Status: event.Status
+            title: event.title,
+            dateTime: new Date(event.dateTime),
+            location: event.location,
+            description: event.description,
+            status: event.status
           });
         },
         error: (error) => {
@@ -144,8 +144,8 @@ export class EventFormComponent implements OnInit {
 
     const eventData: Event = {
       ...formValue,
-      DateTime: new Date(formValue.DateTime).toISOString(),
-      ...(this.isEditMode && { Id: this.eventId })
+      dateTime: new Date(formValue.dateTime).toISOString(),
+      ...(this.isEditMode && { id: this.eventId })
     };
 
     const request$ = this.isEditMode

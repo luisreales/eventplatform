@@ -6,10 +6,10 @@ export enum EventStatus {
 }
 
 export interface Event {
-  Id: string;
-  Title: string;
-  DateTime: string | Date;
-  Location: string;
-  Description: string;
-  Status: EventStatus;
+  id: string;
+  title: string;
+  dateTime: string | Date;
+  location: string;
+  description: string;
+  status: EventStatus;
 }

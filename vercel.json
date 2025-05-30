@@ -1,7 +1,7 @@
 {
   "version": 2,
-  "buildCommand": "cd FrontendTest && npm install && npm run build",
-  "outputDirectory": "FrontendTest/dist/event-platform/browser",
+  "buildCommand": "cd Frontend/event-platform && npm install && npm run build -- --configuration=production",
+  "outputDirectory": "Frontend/event-platform/dist/event-platform/browser",
   "framework": "angular",
   "rewrites": [
     {

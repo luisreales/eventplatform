@@ -8,10 +8,18 @@ import { environment } from '../../environments/environment';
   providedIn: 'root'
 })
 export class EventService {
-  // Using production API URL from environment configuration
-  private apiUrl = environment.apiUrl + '/events';
+  private apiUrl: string;
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {
+    if (environment.production) {
+      console.log('Running in PRODUCTION mode');
+      this.apiUrl = 'https://eventplatform-api.onrender.com/api/events';
+    } else {
+      console.log('Running in DEVELOPMENT mode');
+      this.apiUrl = 'http://localhost:5237/api/events';
+    }
+    console.log('Using API URL:', this.apiUrl);
+  }
 
   getEvents(): Observable<Event[]> {
     return this.http.get<Event[]>(this.apiUrl);

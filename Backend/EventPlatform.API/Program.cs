@@ -17,16 +17,26 @@ builder.Services.AddCors(options =>
 {
     options.AddPolicy("AllowVercel", policy =>
     {
-        policy.WithOrigins(
-                "https://eventplatform-q2383d2ov-luisreales-projects.vercel.app",
-                "https://eventplatform-tau.vercel.app",
-                "https://eventplatform-a9qrmoc55-luisreales-projects.vercel.app",
-                "https://eventplatform-o6usnhxtb-luisreales-projects.vercel.app",
-                "https://eventplatform.vercel.app"
-            )
-            .AllowAnyHeader()
-            .AllowAnyMethod()
-            .AllowCredentials();
+        if (builder.Environment.IsDevelopment())
+        {
+            policy.AllowAnyOrigin()
+                  .AllowAnyHeader()
+                  .AllowAnyMethod();
+        }
+        else
+        {
+            policy.WithOrigins(
+                    "https://eventplatform-q2383d2ov-luisreales-projects.vercel.app",
+                    "https://eventplatform-tau.vercel.app",
+                    "https://eventplatform-a9qrmoc55-luisreales-projects.vercel.app",
+                    "https://eventplatform-o6usnhxtb-luisreales-projects.vercel.app",
+                    "https://eventplatform.vercel.app",
+                    "http://localhost:4200"
+                )
+                .AllowAnyHeader()
+                .AllowAnyMethod()
+                .AllowCredentials();
+        }
     });
 });
 

@@ -7,7 +7,7 @@ import { Event } from '../models/event.model';
   providedIn: 'root'
 })
 export class EventService {
-  private apiUrl = 'https://eventplatform-api.onrender.com/api/events';
+  private apiUrl = '/api/events';
 
   constructor(private http: HttpClient) {
     console.log('Using API URL:', this.apiUrl);

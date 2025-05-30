@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "buildCommand": "cd Frontend/event-platform && npm install && npm install -g @angular/cli && ng build --configuration=production",
+  "buildCommand": "cd Frontend/event-platform && npm install && npx ng build --configuration=production",
   "outputDirectory": "Frontend/event-platform/dist/event-platform/browser",
   "framework": "angular",
   "rewrites": [

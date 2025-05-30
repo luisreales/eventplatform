@@ -1,6 +1,6 @@
 export const environment = {
   production: false,
-  apiUrl: 'http://localhost:5237/api'
+  apiUrl: 'https://eventplatform-api.onrender.com/api'
 };
 
 export const environmentProd = {

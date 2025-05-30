@@ -18,14 +18,11 @@ builder.Services.AddCors(options =>
     options.AddPolicy("AllowSpecificOrigins",
         builder =>
         {
-            builder.WithOrigins(
-                "http://localhost:4200",
-                "https://eventplatform-o6usnhxtb-luisreales-projects.vercel.app",
-                "https://eventplatform.vercel.app",
-                "https://eventplatform-tau.vercel.app"
-            )
-            .AllowAnyMethod()
-            .AllowAnyHeader();
+            builder
+                .SetIsOriginAllowed(origin => true) // Allow any origin during development
+                .AllowAnyMethod()
+                .AllowAnyHeader()
+                .AllowCredentials();
         });
 });
 
@@ -52,7 +49,7 @@ if (app.Environment.IsProduction())
     app.UseHttpsRedirection();
 }
 
-// Use CORS
+// Use CORS - Make sure this is called before other middleware
 app.UseCors("AllowSpecificOrigins");
 
 app.UseAuthorization();

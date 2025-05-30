@@ -21,7 +21,8 @@ builder.Services.AddCors(options =>
             builder.WithOrigins(
                 "http://localhost:4200",
                 "https://eventplatform-o6usnhxtb-luisreales-projects.vercel.app",
-                "https://eventplatform.vercel.app"
+                "https://eventplatform.vercel.app",
+                "https://eventplatform-tau.vercel.app"
             )
             .AllowAnyMethod()
             .AllowAnyHeader();

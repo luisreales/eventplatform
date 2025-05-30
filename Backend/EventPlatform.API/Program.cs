@@ -28,7 +28,8 @@ builder.Services.AddCors(options =>
                 )
                 .AllowAnyMethod()
                 .AllowAnyHeader()
-                .AllowCredentials();
+                .AllowCredentials()
+                .WithExposedHeaders("Access-Control-Allow-Origin");
         });
 });
 
@@ -48,6 +49,17 @@ app.Use(async (context, next) =>
     var logger = context.RequestServices.GetRequiredService<ILogger<Program>>();
     logger.LogInformation($"Request: {context.Request.Method} {context.Request.Path}");
     logger.LogInformation($"Origin: {context.Request.Headers["Origin"]}");
+    
+    // Add CORS headers manually for preflight requests
+    if (context.Request.Method == "OPTIONS")
+    {
+        context.Response.Headers.Add("Access-Control-Allow-Origin", context.Request.Headers["Origin"]);
+        context.Response.Headers.Add("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS");
+        context.Response.Headers.Add("Access-Control-Allow-Headers", "Content-Type, Authorization");
+        context.Response.Headers.Add("Access-Control-Allow-Credentials", "true");
+        context.Response.StatusCode = 200;
+        return;
+    }
     
     await next();
     

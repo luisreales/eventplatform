@@ -19,7 +19,13 @@ builder.Services.AddCors(options =>
         builder =>
         {
             builder
-                .SetIsOriginAllowed(origin => true) // Allow any origin during development
+                .WithOrigins(
+                    "http://localhost:4200",
+                    "https://eventplatform-tau.vercel.app",
+                    "https://eventplatform-a9qrmoc55-luisreales-projects.vercel.app",
+                    "https://eventplatform-o6usnhxtb-luisreales-projects.vercel.app",
+                    "https://eventplatform.vercel.app"
+                )
                 .AllowAnyMethod()
                 .AllowAnyHeader()
                 .AllowCredentials();
@@ -35,6 +41,18 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseSqlite(builder.Configuration.GetConnectionString("DefaultConnection")));
 
 var app = builder.Build();
+
+// Add debugging middleware
+app.Use(async (context, next) =>
+{
+    var logger = context.RequestServices.GetRequiredService<ILogger<Program>>();
+    logger.LogInformation($"Request: {context.Request.Method} {context.Request.Path}");
+    logger.LogInformation($"Origin: {context.Request.Headers["Origin"]}");
+    
+    await next();
+    
+    logger.LogInformation($"Response: {context.Response.StatusCode}");
+});
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())

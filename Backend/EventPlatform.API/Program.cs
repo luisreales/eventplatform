@@ -15,22 +15,19 @@ builder.Services.AddControllers()
 // Configure CORS
 builder.Services.AddCors(options =>
 {
-    options.AddPolicy("AllowSpecificOrigins",
-        builder =>
-        {
-            builder
-                .WithOrigins(
-                    "http://localhost:4200",
-                    "https://eventplatform-tau.vercel.app",
-                    "https://eventplatform-a9qrmoc55-luisreales-projects.vercel.app",
-                    "https://eventplatform-o6usnhxtb-luisreales-projects.vercel.app",
-                    "https://eventplatform.vercel.app"
-                )
-                .AllowAnyMethod()
-                .AllowAnyHeader()
-                .AllowCredentials()
-                .WithExposedHeaders("Access-Control-Allow-Origin");
-        });
+    options.AddPolicy("AllowVercel", policy =>
+    {
+        policy.WithOrigins(
+                "https://eventplatform-q2383d2ov-luisreales-projects.vercel.app",
+                "https://eventplatform-tau.vercel.app",
+                "https://eventplatform-a9qrmoc55-luisreales-projects.vercel.app",
+                "https://eventplatform-o6usnhxtb-luisreales-projects.vercel.app",
+                "https://eventplatform.vercel.app"
+            )
+            .AllowAnyHeader()
+            .AllowAnyMethod()
+            .AllowCredentials();
+    });
 });
 
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
@@ -79,8 +76,8 @@ if (app.Environment.IsProduction())
     app.UseHttpsRedirection();
 }
 
-// Use CORS - Make sure this is called before other middleware
-app.UseCors("AllowSpecificOrigins");
+// Use CORS
+app.UseCors("AllowVercel");
 
 app.UseAuthorization();
 
